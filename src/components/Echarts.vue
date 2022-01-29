@@ -1,7 +1,12 @@
 <template>
   <div class="e-charts">
     <p class="title"><i></i>疫情地图</p>
-    <div id="map"></div>
+    <Tabs :currentIndex="currentIndex" @onIndex="indexChange">
+      <Tab index="1" label="国内疫情"> <div id="map">国内</div> </Tab>
+      <Tab index="2" label="国外疫情">
+        <div id="worldMap">国外疫情</div>
+      </Tab>
+    </Tabs>
   </div>
 </template>
 
@@ -10,6 +15,18 @@ import api from "../api";
 
 export default {
   name: "Echarts",
+  data() {
+    return {
+      // 当前tab的索引值
+      currentIndex: "1",
+    };
+  },
+  methods: {
+    // 3.给currentIndex赋值
+    indexChange(index) {
+      this.currentIndex = index;
+    },
+  },
   mounted() {
     // api
     //   .getCityNcov({
@@ -18,6 +35,7 @@ export default {
     //   .then((res) => {
     //     console.log(res.data);
     this.$charts.chinaMap("map");
+    this.$charts.worldMap("worldMap");
     //   })
     //   .catch((error) => {
     //     console.log(error);
