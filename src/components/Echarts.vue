@@ -2,16 +2,16 @@
   <div class="e-charts">
     <p class="title"><i></i>疫情地图</p>
     <Tabs :currentIndex="currentIndex" @onIndex="indexChange">
-      <Tab index="1" label="国内疫情"> <div id="map">国内</div> </Tab>
+      <Tab index="1" label="国内疫情"> <div id="map"></div> </Tab>
       <Tab index="2" label="国外疫情">
-        <div id="worldMap">国外疫情</div>
+        <div id="worldMap"></div>
       </Tab>
     </Tabs>
   </div>
 </template>
 
 <script>
-import api from "../api";
+import axios from "axios";
 
 export default {
   name: "Echarts",
@@ -28,18 +28,46 @@ export default {
     },
   },
   mounted() {
-    // api
-    //   .getCityNcov({
-    //     key: "f82eaba2c1324c14c503f2c22089495e",
-    //   })
-    //   .then((res) => {
-    //     console.log(res.data);
-    this.$charts.chinaMap("map");
-    this.$charts.worldMap("worldMap");
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    function nocvCity() {
+      return axios.get("http://111.231.75.86:8000/api/provinces/CHN/");
+    }
+    function nocvAbroad() {
+      return axios.get(
+        "http://api.tianapi.com/ncovabroad/index?key=ae08907862c9415e6224eaa185c7d3de"
+      );
+    }
+    function nocvProvince() {
+      return axios.get("http://111.231.75.86:8000/api/provinces/CHN/");
+    }
+    // 合并网络请求
+    axios
+      .all([nocvCity(), nocvAbroad()])
+      .then(
+        axios.spread((nocvCity, nocvAbroad) => {
+          // 两个请求现在都执行完成
+          let allCitys = [];
+          for (let i = 0; i < nocvCity.data.length; i++) {
+            let temp = {
+              name: nocvCity.data[i].provinceName,
+              value: nocvCity.data[i].currentConfirmedCount,
+            };
+            allCitys.push(temp);
+          }
+          let worlds = [];
+          for (let j = 0; j < nocvAbroad.data.newslist.length; j++) {
+            let temp = {
+              name: nocvAbroad.data.newslist[j].provinceName,
+              value: nocvAbroad.data.newslist[j].currentConfirmedCount,
+            };
+            worlds.push(temp);
+          }
+          this.$charts.chinaMap("map", allCitys);
+          this.$charts.worldMap("worldMap", worlds);
+        })
+      )
+      .catch((error) => {
+        console.log(error);
+      });
   },
 };
 </script>

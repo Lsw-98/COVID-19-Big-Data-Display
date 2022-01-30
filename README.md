@@ -23,3 +23,5 @@ https://github.com/nickiwen/echarts/tree/master/example
    ```
 3. 在main.js中导入index.js文件，然后使用Vue.use()加载组件
 
+# 轮播图
+swiper参考地址：https://github.com/surmon-china/vue-awesome-swiper

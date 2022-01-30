@@ -10,6 +10,7 @@
     <Info :covid19Info="covid19Info"></Info>
     <Case :caseInfo="caseInfo"></Case>
     <Echarts></Echarts>
+    <MySwiper></MySwiper>
   </div>
 </template>
 
@@ -19,6 +20,7 @@ import Header from "@/components/Header.vue";
 import Info from "@/components/Covid19Info.vue";
 import Case from "@/components/CaseData.vue";
 import Echarts from "@/components/Echarts.vue";
+import MySwiper from "@/components/MySwiper.vue";
 
 import api from "@/api";
 
@@ -29,6 +31,7 @@ export default {
     Info,
     Case,
     Echarts,
+    MySwiper,
   },
   data() {
     return {
