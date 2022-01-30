@@ -47,6 +47,9 @@ import "../node_modules/echarts/map/js/province/zhejiang"
 import Tab from './components/tabs'
 import Tabs from './components/tabs'
 
+// 引入vant
+import Vant from './plugins/vant'
+
 
 Vue.use(Echarts)
 Vue.use(Tab)

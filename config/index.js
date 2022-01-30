@@ -11,17 +11,11 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       // '/api': {
-      //   //这里填写真实的接口地址
-      //   // https://interface.sina.cn/news/wap/fymap2020_data.d.json
-      //   //target: 'https://view.inews.qq.com/',
-      //   target: "https://interface.sina.cn/",
-      //   changOrigin: true, //设置允许跨域
-      //   pathRewrite: {//这个重写不可省略！因为我们真正请求的地址并不含 /api
-      //     '^/api': ''
-      //     /* 当我们在浏览器中看到请求的地址为：http://localhost:8080/api/data/getdata 时
-      //     因为重写了 /api ，所以实际上访问的地址是：http://x.x.x.x:x/data/getdata，
-      //     */
-      //   },
+      //   target: 'http://apis.juhe.cn',
+      //   changOrigin: true,  //允许跨域
+      //   pathRewrite: {
+      //     '^/api': ''  //请求的时候使用这个api就可以
+      //   }
       // }
     },
 

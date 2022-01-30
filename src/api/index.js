@@ -14,6 +14,12 @@ const ncovAbroadData = {
   url: "/ncovabroad/index",
 }
 
+const cascadeData = {
+  // baseUrl: "/api",
+  baseUrl: "http://apis.juhe.cn",
+  url: "/springTravel/citys",
+}
+
 const api = {
   /**
    * 疫情数据
@@ -36,6 +42,14 @@ const api = {
    */
   getAbroadNcov(params) {
     return axios.get(ncovAbroadData.baseUrl + ncovAbroadData.url, {
+      params
+    })
+  },
+  /**
+   * 省市级联数据
+   */
+  getCascade(params) {
+    return axios.get(cascadeData.baseUrl + cascadeData.url, {
       params
     })
   }

@@ -11,6 +11,7 @@
     <Case :caseInfo="caseInfo"></Case>
     <Echarts></Echarts>
     <MySwiper></MySwiper>
+    <Cascade></Cascade>
   </div>
 </template>
 
@@ -21,6 +22,7 @@ import Info from "@/components/Covid19Info.vue";
 import Case from "@/components/CaseData.vue";
 import Echarts from "@/components/Echarts.vue";
 import MySwiper from "@/components/MySwiper.vue";
+import Cascade from "@/components/Cascade.vue";
 
 import api from "@/api";
 
@@ -32,6 +34,7 @@ export default {
     Case,
     Echarts,
     MySwiper,
+    Cascade,
   },
   data() {
     return {

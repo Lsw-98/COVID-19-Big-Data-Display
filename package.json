@@ -10,9 +10,11 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@vant/area-data": "^1.2.2",
     "axios": "^0.25.0",
     "echarts": "^4.9.0",
     "swiper": "^7.4.1",
+    "vant": "^2.12.39",
     "vue": "^2.5.2",
     "vue-awesome-swiper": "^4.1.1",
     "vue-router": "^3.0.1"
@@ -22,6 +24,7 @@
     "babel-core": "^6.22.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-loader": "^7.1.1",
+    "babel-plugin-import": "^1.13.3",
     "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-runtime": "^6.22.0",
     "babel-plugin-transform-vue-jsx": "^3.5.0",
